@@ -1,0 +1,477 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn Solutions - Tech Education Redefined</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #070054;
+            --accent: #d9d9d9;
+            --white: #ffffff;
+            --black: #000000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #05003a;
+            transform: translateY(-2px);
+        }
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, rgba(7, 0, 84, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+        
+        .section-title h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(7, 0, 84, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            background-color: var(--white);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .project-card h4 {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo (1).png" alt="TechLearn Solutions Logo">
+                    <h1>TechLearn</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#techprep">TechPrep</a></li>
+                    <li><a href="#designlab">DesignLab</a></li>
+                    <li><a href="#internship">Internship</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#" class="cta-button">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <h2>Empowering Your Tech Journey</h2>
+            <p>Master in-demand skills with our comprehensive programs and hands-on projects designed to bridge the gap between academia and industry.</p>
+            <a href="#" class="cta-button">Explore Programs</a>
+        </div>
+    </section>
+    <section id="techprep">
+        <div class="container">
+            <div class="section-title">
+                <h3>TechPrep Placement Training</h3>
+                <p>Our intensive training program prepares you for technical interviews with top companies through coding challenges, mock interviews, and resume building.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>DSA Mastery</h4>
+                    <p>Master Data Structures and Algorithms with 200+ curated problems and expert guidance.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>Mock Interviews</h4>
+                    <p>Simulate real interview scenarios with industry professionals and receive detailed feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h4>System Design</h4>
+                    <p>Learn to design scalable systems with our comprehensive system design curriculum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="designlab" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h3>DesignLab</h3>
+                <p>Our interactive playground for frontend development where you can experiment with HTML, CSS, and JavaScript in real-time.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fab fa-html5"></i>
+                    <h4>HTML5</h4>
+                    <p>Learn modern semantic HTML with interactive examples and challenges.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h4>CSS3</h4>
+                    <p>Master Flexbox, Grid, animations and responsive design principles.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fab fa-js"></i>
+                    <h4>JavaScript</h4>
+                    <p>From basics to advanced concepts with our interactive coding environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="internship">
+        <div class="container">
+            <div class="section-title">
+                <h3>Summer Internship Program</h3>
+                <p>Our 8-week intensive internship program for undergraduate students to gain real-world experience.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Industry Projects</h4>
+                    <p>Work on real projects with mentorship from industry experts.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Certification</h4>
+                    <p>Earn a certificate upon successful completion with performance evaluation.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>Networking</h4>
+                    <p>Connect with professionals and like-minded peers in your field.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h3>Mini Projects</h3>
+                <p>Hands-on projects to apply your learning and build an impressive portfolio.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h4>HTML/CSS</h4>
+                    <p>Responsive landing pages, portfolios, and more.</p>
+                </div>
+                <div class="project-card">
+                    <h4>JavaScript</h4>
+                    <p>Interactive web apps, games, and utilities.</p>
+                </div>
+                <div class="project-card">
+                    <h4>React.js</h4>
+                    <p>Single page applications with modern UI.</p>
+                </div>
+                <div class="project-card">
+                    <h4>Python</h4>
+                    <p>Data analysis, automation, and web scraping.</p>
+                </div>
+                <div class="project-card">
+                    <h4>Java</h4>
+                    <p>Console applications and Android basics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>TechLearn</h4>
+                    <p>Bridging the gap between education and industry with practical, hands-on tech training.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">TechPrep</a></li>
+                        <li><a href="#">DesignLab</a></li>
+                        <li><a href="#">Summer Internship</a></li>
+                        <li><a href="#">Mini Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Bangalore</li>
+                        <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                        <li><i class="fas fa-envelope"></i> hello@techlearn.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TechLearn Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .project-card, .section-title').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
